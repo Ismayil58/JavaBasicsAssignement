@@ -1,0 +1,28 @@
+public class Ssss {
+	 public static void main(String[] args) {
+	        // Öğrencinin notları
+	        double not1 = 60;
+	        double not2 = 55;
+	        double not3 = 70;
+	        double not4 = 45;
+	        double not5 = 50;
+
+	        // Notların ortalamasını hesaplama
+	        double ortalama = (not1 + not2 + not3 + not4 + not5) / 5;
+
+	        // Ortalama 50'nin üzerindeyse 1, altındaysa 0 değerini alacak bir değişken
+	        int durum = ortalama > 50 ? 1 : 0;
+
+	        // Switch-case yapısı ile durumu kontrol etme
+	        switch (durum) {
+	            case 1:
+	                System.out.println("Ortalama: " + ortalama + " - Öğrenci geçti.");
+	                break;
+	            case 0:
+	                System.out.println("Ortalama: " + ortalama + " - Öğrenci kaldı.");
+	                break;
+	            default:
+	                System.out.println("Geçersiz durum.");
+	                break;
+	        }
+	        }
