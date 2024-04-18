@@ -1,0 +1,40 @@
+
+	import java.util.Scanner;
+
+	public class  Hello world {
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+
+	        // Prompt the user for a string
+	        System.out.print("Enter a string to check if it's a palindrome: ");
+	        String input = scanner.nextLine();
+
+	        // Normalize the string by removing non-alphanumeric characters and converting to lower case
+	        String normalized = input.replaceAll("[\\W_]+", "").toLowerCase();
+
+	        // Check if the string is a palindrome
+	        boolean isPalindrome = isPalindrome(normalized);
+	        if (isPalindrome) {
+	            System.out.println("\"" + input + "\" is a palindrome.");
+	        } else {
+	            System.out.println("\"" + input + "\" is not a palindrome.");
+	        }
+
+	        scanner.close();
+	    }
+
+	    // Method to determine if a string is a palindrome
+	    private static boolean isPalindrome(String text) {
+	        int left = 0;
+	        int right = text.length() - 1;
+
+	        while (left < right) {
+	            if (text.charAt(left) != text.charAt(right)) {
+	                return false; // Not a palindrome
+	            }
+	            left++;
+	            right--;
+	        }
+	        return true; // It's a palindrome
+	    }
+	}
