@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Hello word {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+     
+        System.out.print("Enter a number to check if it is prime or composite: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("That's not a valid number!");
+            scanner.next(); 
+            System.out.print("Please enter an integer: ");
+        }
+        int number = scanner.nextInt();
+
+       
+        if (isPrime(number)) {
+            System.out.println(number + " is a prime number.");
+        } else {
+            System.out.println(number + " is a composite number.");
+        }
+
+        scanner.close();
+    }
+
+    // Method to determine if a number is prime
+    private static boolean isPrime(int num) {
+        // Check if number is less than 2
+        if (num < 2) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true; 
+    }
+}
