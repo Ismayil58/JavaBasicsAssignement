@@ -1,0 +1,63 @@
+public class Hello world {
+    private int[] queue;
+    private int front;
+    private int rear;
+    private int capacity;
+    private int count;
+
+    public QueueUsingArray(int size) {
+        queue = new int[size];
+        capacity = size;
+        front = 0;
+        rear = -1;
+        count = 0;
+    }
+
+    public void enqueue(int item) {
+        if (isFull()) {
+            System.out.println("Queue Overflow");
+            System.exit(1);
+        }
+        rear = (rear + 1) % capacity;
+        queue[rear] = item;
+        count++;
+    }
+
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue Underflow");
+            System.exit(1);
+        }
+        int item = queue[front];
+        front = (front + 1) % capacity;
+        count--;
+        return item;
+    }
+
+    public boolean isFull() {
+        return count == capacity;
+    }
+
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty");
+            System.exit(1);
+        }
+        return queue[front];
+    }
+
+    public static void main(String[] args) {
+        QueueUsingArray queue = new QueueUsingArray(5);
+
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        System.out.println("Front element is: " + queue.peek());
+        queue.dequeue();
+        System.out.println("Front element is: " + queue.peek());
+    }
+}
