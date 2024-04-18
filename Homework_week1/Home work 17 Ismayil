@@ -1,0 +1,41 @@
+import java.io.*;
+import java.nio.file.*;
+import java.util.*;
+
+public class Hello world {
+    
+    public static void main(String[] args) {
+        String inputFile = "input.txt";  
+        String outputFile = "output.txt"; 
+
+        List<String> processedLines = new ArrayList<>();
+        Path inputPath = Paths.get(inputFile);
+
+        try (BufferedReader reader = Files.newBufferedReader(inputPath)) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                try {
+                    int number = Integer.parseInt(line);
+                    int doubledValue = number * 2;
+                    processedLines.add(String.valueOf(doubledValue));
+                } catch (NumberFormatException e) {
+                    System.out.println("Skipping invalid integer: " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Failed to read from " + inputFile + ": " + e.getMessage());
+            return;
+        }
+
+    
+        Path outputPath = Paths.get(outputFile);
+        try (BufferedWriter writer = Files.newBufferedWriter(outputPath)) {
+            for (String line : processedLines) {
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Failed to write to " + outputFile + ": " + e.getMessage());
+        }
+    }
+}
