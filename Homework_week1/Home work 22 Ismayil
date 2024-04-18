@@ -1,0 +1,63 @@
+public class Hello world {
+    private Node top;
+
+    private class Node {
+        int value;
+        Node next;
+
+        public Node(int value) {
+            this.value = value;
+        }
+    }
+
+    public void push(int value) {
+        Node newNode = new Node(value);
+        newNode.next = top;
+        top = newNode;
+    }
+
+    public int pop() {
+        if (top == null) {
+            System.out.println("Stack Underflow");
+            System.exit(1);
+        }
+        int popped = top.value;
+        top = top.next;
+        return popped;
+    }
+
+    public int peek() {
+        if (top == null) {
+            System.out.println("Stack is empty");
+            System.exit(1);
+        }
+        return top.value;
+    }
+
+    public boolean isEmpty() {
+        return top == null;
+    }
+
+    public void printStack() {
+        Node temp = top;
+        while (temp != null) {
+            System.out.print(temp.value + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        StackUsingLinkedList stack = new StackUsingLinkedList();
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.printStack();
+
+        stack.pop();
+        stack.printStack();
+
+        System.out.println("Top element is: " + stack.peek());
+    }
+}
